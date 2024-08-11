@@ -1,0 +1,6 @@
+adbutils
+ncnn
+numpy
+scrcpy-client
+torch
+torchvision
