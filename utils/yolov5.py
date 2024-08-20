@@ -15,6 +15,7 @@ import os
 import time
 import numpy as np
 import ncnn
+from config import Conf
 from ncnn.model_zoo.model_store import get_model_file
 from ncnn.utils.objects import Detect_Object
 from ncnn.utils.functional import *
@@ -48,6 +49,8 @@ class YoloV5Focus(ncnn.Layer):
 
         return 0
 
+def get_base_path():
+    return Conf.get_base_path()
 
 def YoloV5Focus_layer_creator():
     return YoloV5Focus()
@@ -87,9 +90,9 @@ class YoloV5s:
         )
 
         model_name = "new"
-        param_path = f"/Users/weiwentao/wentao_test/dnfm-yolo/model/{model_name}.param"
-        bin_path = f"/Users/weiwentao/wentao_test/dnfm-yolo/model/{model_name}.bin"
-        classes_path = f"/Users/weiwentao/wentao_test/dnfm-yolo/model/{model_name}.txt"
+        param_path = f"{get_base_path()}/model/{model_name}.param"
+        bin_path = f"{get_base_path()}/model/{model_name}.bin"
+        classes_path = f"{get_base_path()}/model/{model_name}.txt"
 
         # 确保文件存在
         if not os.path.exists(param_path):
